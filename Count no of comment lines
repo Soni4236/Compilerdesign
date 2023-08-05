@@ -1,0 +1,39 @@
+%{ 
+ #include<stdio.h> 
+ int nc=0; 
+ %} 
+  
+ %% 
+ "/*"[a-zA-Z0-9\n\t ]*"*/"  {nc++;} 
+ "//"[a-zA-Z0-9\t ]*"\n"   {nc++;} 
+ %% 
+ int yywrap( ){} 
+  
+ int main(int argc ,char* argv[]) 
+ { 
+         yyin=fopen(argv[1],"r"); 
+  
+         yyout=fopen("output.c","w"); 
+         yylex( ); 
+         printf("The number of comment lines=%d\n",nc); 
+  
+ } 
+ output: 
+ Microsoft Windows [Version 10.0.22000.2176] 
+ (c) Microsoft Corporation. All rights reserved. 
+  
+ C:\Users\soni>cd compiler 
+  
+ C:\Users\soni\compiler>set path=C:\Program Files (x86)\GnuWin32\bin 
+  
+ C:\Users\soni\compiler>flex comment.l.txt 
+  
+ C:\Users\soni\compiler>set path=C:\MinGW\bin 
+  
+ C:\Users\soni\compiler>gcc lex.yy.c 
+  
+ C:\Users\soni\compiler>a 
+ //iam a student 
+ The number of comment lines=1 
+  
+ C:\Users\soni\compiler>
