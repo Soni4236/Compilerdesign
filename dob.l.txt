@@ -1,0 +1,31 @@
+%% 
+ ((0[1-9])|([1-2][0-9])|(3[0-1]))\/((0[1-9])|(1[0-2]))\/(19[0-9]{2}|2[0-9]{3}) printf("Valid DoB"); 
+ .* printf("Invalid DoB"); 
+ %% 
+  
+ int main() 
+ { 
+  yylex(); 
+  return 0; 
+ } 
+ int yywrap() 
+ {} 
+ output: 
+ microsoft Windows [Version 10.0.22000.1936] 
+ (c) Microsoft Corporation. All rights reserved. 
+  
+ C:\Users\soni>cd compiler 
+  
+ C:\Users\soni\compiler>set path=C:\Program Files (x86)\GnuWin32\bin 
+  
+ C:\Users\soni\compiler>flex dob.l.txt 
+  
+ C:\Users\soni\compiler>set path=C:\MinGW\bin 
+  
+ C:\Users\soni\compiler>gcc lex.yy.c 
+  
+ C:\Users\soni\compiler>a 
+ 11/10/2003 
+ Valid DoB 
+ 1/13/2004 
+ Invalid DoB
