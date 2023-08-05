@@ -1,0 +1,36 @@
+%% 
+ [A-Z]+[\t\n ] { printf("%s is a capital letter\n",yytext); } 
+ .  ; 
+ %% 
+  
+ int main( )  
+ { 
+         printf("Enter String :\n"); 
+         yylex(); 
+ } 
+ int yywrap( ) 
+ { 
+         return 1; 
+ } 
+ output: 
+ Microsoft Windows [Version 10.0.22000.1936] 
+ (c) Microsoft Corporation. All rights reserved. 
+  
+ C:\Users\jamal>cd compiler 
+  
+ C:\Users\jamal\compiler>set path=C:\Program Files (x86)\GnuWin32\bin 
+  
+ C:\Users\jamal\compiler>flex capital.l.txt 
+  
+ C:\Users\jamal\compiler>set path=C:\MinGW\bin 
+  
+ C:\Users\jamal\compiler>gcc lex.yy.c 
+  
+ C:\Users\jamal\compiler>a 
+ Enter String : 
+ JAMALAMMA 
+ JAMALAMMA 
+  is a capital letter 
+ hey 
+ hey 
+   is not a capital letter
