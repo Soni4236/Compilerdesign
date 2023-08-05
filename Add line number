@@ -1,0 +1,33 @@
+%{ 
+ int ln=0; 
+ %} 
+  
+ %% 
+  
+ .* {ln++;fprintf(yyout,"\n%d:%s",ln,yytext);} 
+ %% 
+ int yywrap(){} 
+  
+ int main() 
+ { 
+ yyin=fopen("simple.txt","r"); 
+ yyout=fopen("out.txt","w"); 
+ yylex(); 
+ } 
+ output: 
+ Microsoft Windows [Version 10.0.22000.1936] 
+ (c) Microsoft Corporation. All rights reserved. 
+  
+ C:\Users\soni>cd compiler 
+  
+ C:\Users\soni\compiler>set path=C:\Program Files (x86)\GnuWin32\bin 
+  
+ C:\Users\soni\compiler>flex line.l.txt 
+  
+ C:\Users\soni\compiler>set path=C:\MinGW\bin 
+  
+ C:\Users\soni\compiler>gcc lex.yy.c 
+  
+ C:\Users\soni\compiler>a 
+ This is sonipriya
+          1 This is sonipriya
