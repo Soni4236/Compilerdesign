@@ -1,0 +1,42 @@
+%{ 
+ int nlines,nwords,nchars; 
+ %} 
+  
+ %% 
+ \n { 
+         nchars++;nlines++;  
+         } 
+  
+ [^ \n\t]+ {nwords++, nchars=nchars+yyleng;} 
+ . {nchars++;} 
+  
+ %% 
+  
+ int yywrap(void) {} 
+ int main()  
+ { 
+  yylex(); 
+  printf("Lines = %d\nChars=%d\nWords=%d",nlines,nchars,nwords); 
+  
+  return 0; 
+ } 
+ output: 
+ Microsoft Windows [Version 10.0.22000.1936] 
+ (c) Microsoft Corporation. All rights reserved. 
+  
+ C:\Users\soni>cd compiler 
+  
+ C:\Users\soni\compiler>set path=C:\Program Files (x86)\GnuWin32\bin 
+  
+ C:\Users\soni\compiler>flex charwordline.l.txt 
+  
+ C:\Users\soni\compiler>set path=C:\MinGW\bin 
+  
+ C:\Users\soni\compiler>gcc lex.yy.c 
+  
+ C:\Users\soni\compiler>a 
+ hey what are u doing 
+ Lines = 1 
+ Chars=21 
+ Words=5 
+ C:\Users\soni\compiler>
