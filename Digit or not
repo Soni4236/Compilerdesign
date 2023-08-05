@@ -1,0 +1,35 @@
+%{ 
+ %} 
+  
+ digit [0-9] 
+  
+ %% 
+ {digit} { printf("the input character is a digit.\n"); } 
+ .       { printf("the input character is not a digit.\n"); } 
+ %% 
+  
+  
+ int main() 
+ { 
+ yylex(); 
+ return 0; 
+ } 
+ output: 
+ Microsoft Windows [Version 10.0.22000.1936] 
+ (c) Microsoft Corporation. All rights reserved. 
+  
+ C:\Users\soni>cd compiler 
+  
+ C:\Users\soni\compiler>set path=C:\Program Files (x86)\GnuWin32\bin 
+  
+ C:\Users\soni\compiler>flex digit.l.txt 
+  
+ C:\Users\soni\compiler>set path=C:\MinGW\bin 
+  
+ C:\Users\soni\compiler>gcc lex.yy.c 
+  
+ C:\Users\soni\compiler>a 
+ enter the digit:10 
+ digit 
+ ab 
+ not a digit
